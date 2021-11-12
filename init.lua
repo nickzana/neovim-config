@@ -104,7 +104,7 @@ map('t', '<C-e>', '<C-\\><C-n>', {noremap = true})
 -- NERDTree
 map('n', '<leader>nt', '<cmd>NERDTreeToggle<CR>', {noremap = true})
 -- Telescope
-map('n', '<C-p>', '<cmd>Telescope find_files<cr>', {noremap = true})
+map('n', '<C-p>', '<cmd>Telescope git_files<cr>', {noremap = true})
 
 -- LSP TODO: make lua instead of vimscript
 --
@@ -192,11 +192,15 @@ nvim_lsp['rust_analyzer'].setup {
 				allFeatures = true
 			},
 			checkOnSave = {
-				command = "clippy"
+				command = "clippy",
+				extraArgs = "["--", "-W", "clippy::pedantic"]"
 			}
 		}
 	}
 }
+
+-- Python
+require'lspconfig'.jedi_language_server.setup{}
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
