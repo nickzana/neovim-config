@@ -43,7 +43,9 @@ map('n', '<leader>k', '<cmd>lprev<CR>zz', options) -- Go to previous item in glo
 map('n', '<leader>q', '<cmd>call ToggleQFList(0)<CR>', {}) -- see plugin/navigation.vim for ToggleQFList definition
 
 -- git
-map('n', '<leader>gs', '<cmd>G<CR>', options)
+map('n', '<leader>gs', '<cmd>G<CR>', options) -- Show git status
+map('n', '<leader>gc', '<cmd>G commit<CR>', options) -- git commit
+map('n', '<leader>gp', '<cmd>G push<CR>', {}) -- git push
 
 -- LSP
 -- Use an on_attach function to only map the following keys
