@@ -42,10 +42,15 @@ map('n', '<leader>k', '<cmd>lprev<CR>zz', options) -- Go to previous item in glo
 -- Toggle the window if there are items in the qfixlist; allow recursive
 map('n', '<leader>q', '<cmd>call ToggleQFList(0)<CR>', {}) -- see plugin/navigation.vim for ToggleQFList definition
 
--- git
+-- GIT
+-- top level commands
 map('n', '<leader>gs', '<cmd>G<CR>', options) -- Show git status
 map('n', '<leader>gc', '<cmd>G commit<CR>', options) -- git commit
 map('n', '<leader>gp', '<cmd>G push<CR>', {}) -- git push
+
+-- merge
+map('n', '<leader>gh', '<cmd>diffget //3<CR>', options) -- merge from left pane
+map('n', '<leader>gl', '<cmd>diffget //2<CR>', options) -- merge from right pane
 
 -- LSP
 -- Use an on_attach function to only map the following keys
