@@ -2,21 +2,32 @@ local on_attach = require'keybindings'.on_attach
 local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local cmp = require'nvim-cmp-cfg'.cmp
 
--- SERVERS
--- rust_analyzer
-vim.g.rustfmt_autosave = 1
-require'lspconfig'.rust_analyzer.setup{
-    on_attach = on_attach,
+-- texlab with tectonic
+require'lspconfig'.texlab.setup {
+	on_attach = on_attach,
 	capabilities = capabilities,
+	cmd = { "texlab" },
+	filetypes = { "tex", "bib" },
 	settings = {
-		["rust-analyzer"] = {
-			procMacro = {
-				enable = true,
+		texlab = {
+			auxDirectory = ".",
+			bibtexFormatter = "texlab",
+			build = {
+				executable = 'tectonic',
+				args = { "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
+				onSave = true,
+				forwardSearchAfter = true,
 			},
-			checkOnSave = {
-				command = 'clippy',
-				extraArgs = { "--", "-W", "clippy::pedantic" }
+			forwardSearch = {
+				executable = "zathura",
+				-- Per https://github.com/latex-lsp/texlab/blob/master/docs/previewing.md
+				args = {"--synctex-forward", "%l:1:%f", "%p"},
+			},
+			chktex = {
+				onOpenAndSave = true,
+				onEdit = true,
 			},
 		}
-	}
+	},
+	single_file_support = true
 }
