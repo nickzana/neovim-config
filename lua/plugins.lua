@@ -13,6 +13,7 @@ local plugins = require('packer').startup(function(use)
 	    'nvim-telescope/telescope.nvim', -- search and select tool
 	    requires = { {'nvim-lua/plenary.nvim'} }
     }
+	use 'preservim/nerdtree'
 
 	-- git
 	use 'tpope/vim-fugitive'

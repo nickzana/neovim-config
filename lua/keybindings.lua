@@ -21,6 +21,8 @@ map('n', '<C-l>', '<C-w>l', options)
 map('t', '<C-e>', '<C-\\><C-n>', options) -- Exit Terminal mode enter Normal
 
 -- FILE NAVIGATION
+-- NerdTree
+map('n', '<leader>nt', '<cmd>NERDTreeToggle<CR>', options)
 map('n', '<C-p>', '<cmd>Telescope git_files<CR>', options)
 map('n', '<C-f>', '<cmd>Telescope find_files<CR>', options)
 -- Grep for prompted str project wide
