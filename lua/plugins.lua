@@ -31,16 +31,9 @@ local plugins = require('packer').startup(function(use)
 	use 'hrsh7th/cmp-vsnip'
 	use 'hrsh7th/vim-vsnip'
 
-	-- Language Specfic
-	use 'rust-lang/rust.vim'
-
   if packer_bootstrap then
     require('packer').sync()
   end
 end)
-
--- Required for rust.vim
--- TODO: Convert to lua
-vim.cmd([[filetype plugin indent on]])
 
 return plugins
