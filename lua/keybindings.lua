@@ -49,8 +49,8 @@ map('n', '<leader>gc', '<cmd>G commit<CR>', options) -- git commit
 map('n', '<leader>gp', '<cmd>G push<CR>', {}) -- git push
 
 -- merge
-map('n', '<leader>gh', '<cmd>diffget //3<CR>', options) -- merge from left pane
-map('n', '<leader>gl', '<cmd>diffget //2<CR>', options) -- merge from right pane
+map('n', '<leader>gh', '<cmd>diffget //2<CR>', options) -- merge from left pane
+map('n', '<leader>gl', '<cmd>diffget //3<CR>', options) -- merge from right pane
 
 -- LSP
 -- Use an on_attach function to only map the following keys
