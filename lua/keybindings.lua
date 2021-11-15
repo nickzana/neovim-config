@@ -45,7 +45,7 @@ map('n', '<leader>q', '<cmd>call ToggleQFList(0)<CR>', {}) -- see plugin/navigat
 -- git
 map('n', '<leader>gs', '<cmd>G<CR>', options) -- Show git status
 map('n', '<leader>gc', '<cmd>G commit<CR>', options) -- git commit
-map('n', '<leader>gP', '<cmd>G push<CR>', {}) -- git push
+map('n', '<leader>gp', '<cmd>G push<CR>', {}) -- git push
 
 -- LSP
 -- Use an on_attach function to only map the following keys
