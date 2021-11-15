@@ -84,4 +84,8 @@ local on_attach = function(client, bufnr)
 
 end
 
+-- Code actions
+-- TODO: Generalize to LSP or only attach on Rust buffers
+map('n', '<leader>t', '<cmd>RustTest<CR>', options) -- Run test under cursor
+
 return { on_attach = on_attach }
