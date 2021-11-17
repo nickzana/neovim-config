@@ -27,9 +27,6 @@ o.expandtab = false -- Insert <Tab> instead of spaces
 o.shiftwidth = 4 -- "Number of spaces used for each step of an (auto)indent"
 o.scrolloff = 8 -- Start scrolling when 8 away from top/bottom
 
--- Set diagnostic updatetime
-vim.o.updatetime = 300
-
 -- search
 o.hlsearch = false
 o.incsearch = true -- Incremental highlighting while typing a search query
