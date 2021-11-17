@@ -33,6 +33,8 @@ local plugins = require('packer').startup(function(use)
 
 	-- Language Specfic
 	use 'rust-lang/rust.vim'
+	use 'cespare/vim-toml'
+	use 'stephpy/vim-yaml'
 
   if packer_bootstrap then
     require('packer').sync()
