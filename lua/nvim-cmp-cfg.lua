@@ -2,13 +2,10 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
--- Ensure vsnip is installed
-require'cmp_vsnip'
-
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+		vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
   mapping = {
@@ -31,7 +28,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
+    { name = 'ultisnips' },
   }, {
     { name = 'buffer' },
   }),
