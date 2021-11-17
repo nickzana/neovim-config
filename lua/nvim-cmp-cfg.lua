@@ -50,4 +50,6 @@ cmp.setup.cmdline(':', {
   })
 })
 
+let updatetime = 300
+
 return { cmp = cmp }
