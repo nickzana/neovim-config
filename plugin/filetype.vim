@@ -1,5 +1,4 @@
 augroup checktex
 	autocmd!
-		au BufRead,BufNewFile *.tex		if &ft == 'plaintext' | set ft=tex
-								       | endif
+	autocmd BufRead *.tex set filetype=tex
 augroup END
