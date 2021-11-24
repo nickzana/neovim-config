@@ -9,12 +9,6 @@ map('v', '<leader>y', '"+y', options)
 
 -- WINDOW MANAGEMENT
 
--- Navigate windows
-map('n', '<C-h>', '<C-w>h', options)
-map('n', '<C-j>', '<C-w>j', options)
-map('n', '<C-k>', '<C-w>k', options)
-map('n', '<C-l>', '<C-w>l', options)
-
 -- Move windows TODO
 
 -- Terminal
@@ -72,13 +66,13 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
 	buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', options)
 	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', options)
-	buf_set_keymap('n', 's', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
+	buf_set_keymap('n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
 	buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', options)
 	buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true })
 	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', options)
 	buf_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', options)
-	-- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', options)
-	-- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diaoNostic.goto_next()<CR>', options)
+	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', options)
+	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', options)
 	buf_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.set_qflist()<CR>', options)
 	buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', options)
 
