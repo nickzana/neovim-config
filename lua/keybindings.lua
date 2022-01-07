@@ -19,8 +19,10 @@ map('t', '<C-e>', '<C-\\><C-n>', options) -- Exit Terminal mode enter Normal
 map('n', '<leader>nt', '<cmd>NERDTreeToggle<CR>', options)
 map('n', '<C-p>', '<cmd>Telescope git_files<CR>', options)
 map('n', '<C-f>', '<cmd>Telescope find_files<CR>', options)
+-- Grep project file contents with live results, respecting .gitignore
+map('n', '<leader>ps',  "<cmd>lua require('telescope.builtin').live_grep()<CR>", options)
 -- Grep for prompted str project wide
-map('n', '<leader>ps',  "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", options)
+map('n', '<leader>fs',  "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", options)
 -- Telescope fuzzy search for buffers
 map('n', '<leader>pb', "<cmd>lua require('telescope.builtin').buffers()<CR>", options)
 
