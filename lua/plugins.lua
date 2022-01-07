@@ -11,6 +11,7 @@ local plugins = require('packer').startup(function(use)
 	-- file management
     use {
 	    'nvim-telescope/telescope.nvim', -- search and select tool
+		commit = '80cdb00b221f69348afc4fb4b701f51eb8dd3120', -- for neovim 0.5.0 compatibility
 	    requires = { {'nvim-lua/plenary.nvim'} }
     }
 	use 'preservim/nerdtree'
