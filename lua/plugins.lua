@@ -32,7 +32,6 @@ local plugins = require('packer').startup(function(use)
 	use 'SirVer/ultisnips'
 	use 'quangnguyen30192/cmp-nvim-ultisnips'
 
-
   if packer_bootstrap then
     require('packer').sync()
   end
