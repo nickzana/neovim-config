@@ -15,7 +15,7 @@ require'lspconfig'.rust_analyzer.setup{
 			},
 			checkOnSave = {
 				command = 'clippy',
-				extraArgs = "-W clippy::pedantic"
+				extraArgs = { "--", "-W", "clippy::pedantic" }
 			},
 		}
 	}
