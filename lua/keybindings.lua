@@ -3,28 +3,20 @@ local map = vim.api.nvim_set_keymap
 -- Avoid infinitely recursive definitions
 options = { noremap = true }
 
--- Copy/paste
-map('n', '<leader>y', '"+y', options)
-map('v', '<leader>y', '"+y', options)
-
 -- WINDOW MANAGEMENT
-
--- Move windows TODO
 
 -- Terminal
 map('t', '<C-e>', '<C-\\><C-n>', options) -- Exit Terminal mode enter Normal
 
 -- FILE NAVIGATION
--- NerdTree
-map('n', '<leader>nt', '<cmd>NERDTreeToggle<CR>', options)
-map('n', '<C-p>', '<cmd>Telescope git_files<CR>', options)
-map('n', '<C-f>', '<cmd>Telescope find_files<CR>', options)
+map('n', '<leader>f', '<cmd>Telescope git_files<CR>', options)
+map('n', '<leader>af', '<cmd>Telescope find_files<CR>', options)
 -- Grep project file contents with live results, respecting .gitignore
-map('n', '<leader>ps',  "<cmd>lua require('telescope.builtin').live_grep()<CR>", options)
--- Grep for prompted str project wide
-map('n', '<leader>fs',  "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", options)
+map('n', '<leader>g',  "<cmd>lua require('telescope.builtin').live_grep()<CR>", options)
 -- Telescope fuzzy search for buffers
-map('n', '<leader>pb', "<cmd>lua require('telescope.builtin').buffers()<CR>", options)
+map('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<CR>", options)
+
+map('n', 'ga', '<C-^><CR>', options) -- ga to switch to last used buffer
 
 -- CODE NAVIGATOIN
 
@@ -66,17 +58,16 @@ local on_attach = function(client, bufnr)
 
 	buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', options)
 	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
-	buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', options)
-	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', options)
+	buf_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', options)
 	buf_set_keymap('n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
-	buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', options)
-	buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true })
+	buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', options)
+	buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true })
 	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', options)
 	buf_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', options)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', options)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', options)
-	buf_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.set_qflist()<CR>', options)
-	buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', options)
+	buf_set_keymap('n', '<leader>Q', '<cmd>lua vim.diagnostic.set_qflist()<CR>', options)
+	buf_set_keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', options)
 
 end
 

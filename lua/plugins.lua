@@ -11,31 +11,27 @@ local plugins = require('packer').startup(function(use)
 	-- file management
     use {
 	    'nvim-telescope/telescope.nvim', -- search and select tool
-		commit = '80cdb00b221f69348afc4fb4b701f51eb8dd3120', -- for neovim 0.5.0 compatibility
+			commit = '80cdb00b221f69348afc4fb4b701f51eb8dd3120', -- for neovim 0.5.0 compatibility
 	    requires = { {'nvim-lua/plenary.nvim'} }
     }
-	use 'preservim/nerdtree'
 
 	-- git
 	use 'tpope/vim-fugitive'
 
 	-- LSP
 	use 'neovim/nvim-lspconfig' -- Common lsp server configurations
-	use 'tjdevries/lsp_extensions.nvim' -- Provides type inlay hint support
-	use 'hrsh7th/cmp-nvim-lsp'	-- Completion LSP integeration
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use 'hrsh7th/nvim-cmp'		-- Autocompletion
+	use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+	use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
 
-	-- Snippets (Required for nvim-cmp)
-	use 'hrsh7th/cmp-vsnip'
-	use 'hrsh7th/vim-vsnip'
+	-- LSP Extensions
+	use 'nvim-lua/lsp_extensions.nvim'
+
+	-- Snippets (required for nvim-cmp)
+	use 'L3MON4D3/LuaSnip'
+	use 'saadparwaiz1/cmp_luasnip'
 
 	-- Language Specfic
 	use 'rust-lang/rust.vim'
-	use 'cespare/vim-toml'
-	use 'stephpy/vim-yaml'
 
   if packer_bootstrap then
     require('packer').sync()

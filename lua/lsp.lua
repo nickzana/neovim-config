@@ -1,12 +1,15 @@
 local on_attach = require'keybindings'.on_attach
-local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local cmp = require'nvim-cmp-cfg'.cmp
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local lspconfig = require('lspconfig')
 
 -- SERVERS
 -- rust_analyzer
 vim.g.rustfmt_autosave = 1
-require'lspconfig'.rust_analyzer.setup{
-    on_attach = on_attach,
+lspconfig.rust_analyzer.setup{
+	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
 		["rust-analyzer"] = {
@@ -19,4 +22,10 @@ require'lspconfig'.rust_analyzer.setup{
 			},
 		}
 	}
+}
+
+-- clangd
+lspconfig.clangd.setup{
+	on_attach = on_attach,
+	capabilities = capabilities,
 }
