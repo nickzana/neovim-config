@@ -28,7 +28,10 @@ local plugins = require('packer').startup(function(use)
 
 	-- Snippets (required for nvim-cmp)
 	use 'L3MON4D3/LuaSnip'
-	use 'saadparwaiz1/cmp_luasnip'
+	use {
+		'saadparwaiz1/cmp_luasnip',
+		commit = 'b10829736542e7cc9291e60bab134df1273165c9',
+	}
 
 	-- Language Specfic
 	use 'rust-lang/rust.vim'
