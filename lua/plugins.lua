@@ -20,7 +20,10 @@ local plugins = require('packer').startup(function(use)
 
 	-- LSP
 	use 'neovim/nvim-lspconfig' -- Common lsp server configurations
-	use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+	use {
+		'hrsh7th/nvim-cmp',
+		commit = '2aa7eee28b4d49e999c694ca733a393da5808dd6',
+	} -- Autocompletion plugin
 	use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
 
 	-- LSP Extensions
