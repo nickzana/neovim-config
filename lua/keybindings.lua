@@ -28,8 +28,8 @@ map('n', 'ga', '<C-^><CR>', options) -- ga to switch to last used buffer
 
 -- Quick Fix Lists
 -- global -- using control
-map('n', 'J', '<cmd>cnext<CR>zz', options) -- Go to next item in global qfixlist
-map('n', 'K', '<cmd>cprev<CR>zz', options) -- Go to previous item in global qfixlist
+map('n', '<C-n>', '<cmd>cnext<CR>zz', options) -- Go to next item in global qfixlist
+map('n', '<C-p>', '<cmd>cprev<CR>zz', options) -- Go to previous item in global qfixlist
 -- Toggle the window if there are items in the qfixlist; allow recursive
 map('n', 'Q', '<cmd>call ToggleQFList(1)<CR>', {}) -- see plugin/navigation.vim for ToggleQFList definition
 -- local -- using leader
