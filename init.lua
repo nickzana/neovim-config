@@ -4,3 +4,4 @@ require('autocmd')	-- Convenient Autocommands
 require('lsp')
 require('keybindings')
 require('nvim-cmp-cfg')
+require('ts_config')

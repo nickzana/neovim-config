@@ -11,7 +11,6 @@ local plugins = require('packer').startup(function(use)
 	-- file management
     use {
 	    'nvim-telescope/telescope.nvim', -- search and select tool
-			commit = '80cdb00b221f69348afc4fb4b701f51eb8dd3120', -- for neovim 0.5.0 compatibility
 	    requires = { {'nvim-lua/plenary.nvim'} }
     }
 
@@ -22,7 +21,6 @@ local plugins = require('packer').startup(function(use)
 	use 'neovim/nvim-lspconfig' -- Common lsp server configurations
 	use {
 		'hrsh7th/nvim-cmp',
-		commit = '2aa7eee28b4d49e999c694ca733a393da5808dd6',
 	} -- Autocompletion plugin
 	use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
 
@@ -36,8 +34,14 @@ local plugins = require('packer').startup(function(use)
 		commit = 'b10829736542e7cc9291e60bab134df1273165c9',
 	}
 
+	use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
 	-- Language Specfic
 	use 'rust-lang/rust.vim'
+	use 'https://git.sr.ht/~sircmpwn/hare.vim'
 
   if packer_bootstrap then
     require('packer').sync()
