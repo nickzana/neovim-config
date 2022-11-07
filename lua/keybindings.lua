@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 -- Avoid infinitely recursive definitions
 options = { noremap = true }
@@ -62,18 +62,18 @@ local on_attach = function(client, bufnr)
 	local opts = { noremap=true, silent=true }
 
 
-	buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', options)
-	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
-	buf_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', options)
-	buf_set_keymap('n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
-	buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', options)
-	buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true })
-	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', options)
-	buf_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', options)
-	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', options)
-	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', options)
-	buf_set_keymap('n', '<leader>Q', '<cmd>lua vim.diagnostic.set_qflist()<CR>', options)
-	buf_set_keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', options)
+	map('n', 'gD', function() vim.lsp.buf.declaration() end, options)
+	map('n', 'gd', function() vim.lsp.buf.definition() end, options)
+	map('n', '<leader>k', function() vim.lsp.buf.hover() end, options)
+	map('n', '<leader>s', function() vim.lsp.buf.signature_help() end, options)
+	map('n', '<leader>r', function() vim.lsp.buf.rename() end, options)
+	map('n', '<leader>a', function() vim.lsp.buf.code_action() end, options)
+	map('n', 'gr', function() vim.lsp.buf.references() end, options)
+	map('n', '<leader>d', function() vim.diagnostic.open_float() end, options)
+	map('n', '[d', function() vim.diagnostic.goto_prev() end, options)
+	map('n', ']d', function() vim.diagnostic.goto_next() end, options)
+	map('n', '<leader>Q', function() vim.diagnostic.set_qflist() end, options)
+	map('n', '<leader>F', function() vim.lsp.buf.formatting() end, options)
 
 end
 
