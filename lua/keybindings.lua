@@ -73,7 +73,7 @@ local on_attach = function(client, bufnr)
 	map('n', '[d', function() vim.diagnostic.goto_prev() end, options)
 	map('n', ']d', function() vim.diagnostic.goto_next() end, options)
 	map('n', '<leader>Q', function() vim.diagnostic.set_qflist() end, options)
-	map('n', '<leader>F', function() vim.lsp.buf.formatting() end, options)
+	map('n', '<leader>F', function() vim.lsp.buf.format() end, options)
 
 end
 
