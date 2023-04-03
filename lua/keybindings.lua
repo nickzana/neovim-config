@@ -52,33 +52,33 @@ map('n', '<leader>gl', '<cmd>diffget //3<CR>', options) -- merge from right pane
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+	local opts = { buffer = bufnr, remap = false }
 
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	-- Mappings.
-	local opts = { noremap=true, silent=true }
-
-
-	map('n', 'gD', function() vim.lsp.buf.declaration() end, options)
-	map('n', 'gd', function() vim.lsp.buf.definition() end, options)
-	map('n', '<leader>k', function() vim.lsp.buf.hover() end, options)
-	map('n', '<leader>s', function() vim.lsp.buf.signature_help() end, options)
-	map('n', '<leader>r', function() vim.lsp.buf.rename() end, options)
-	map('n', '<leader>a', function() vim.lsp.buf.code_action() end, options)
-	map('n', 'gr', function() vim.lsp.buf.references() end, options)
-	map('n', '<leader>d', function() vim.diagnostic.open_float() end, options)
-	map('n', '[d', function() vim.diagnostic.goto_prev() end, options)
-	map('n', ']d', function() vim.diagnostic.goto_next() end, options)
-	map('n', '<leader>Q', function() vim.diagnostic.set_qflist() end, options)
-	map('n', '<leader>F', function() vim.lsp.buf.format() end, options)
-
+	vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+	vim.keymap.set('n', '<leader>k', function() vim.lsp.buf.hover() end, opts)
+	vim.keymap.set('n', '<leader>r', function() vim.lsp.buf.rename() end, opts)
+	vim.keymap.set('n', '<leader>a', function() vim.lsp.buf.code_action() end, opts)
+	vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
+	vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float() end, opts)
+	vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+	vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
+	vim.keymap.set('n', '<leader>Q', function() vim.diagnostic.set_qflist() end, opts)
+	vim.keymap.set('n', '<leader>F', function() vim.lsp.buf.format() end, opts)
 end
 
--- Code actions
--- TODO: Generalize to LSP or only attach on Rust buffers
-map('n', '<leader>t', '<cmd>RustTest<CR>', options) -- Run test under cursor
+local cmp_mappings = function ()
+	local cmp = require('cmp')
+	return {
+		['<C-j>'] = cmp.mapping.scroll_docs(4),
+		['<C-k>'] = cmp.mapping.scroll_docs(-4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+		['<CR>'] = cmp.mapping.confirm {
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		},
+	}
+end
 
-return { on_attach = on_attach }
+return { on_attach = on_attach, cmp_mappings = cmp_mappings }

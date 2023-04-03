@@ -1,4 +1,4 @@
-local o = vim.o  -- global
+local o = vim.o  -- globalopts
 local g = vim.g  -- global 2?
 local wo = vim.wo -- window local
 local bo = vim.bo -- buffer local
@@ -43,3 +43,5 @@ o.dir = '/tmp'
 
 -- Buffers
 o.hidden = true -- Allow hidden buffers without saving
+
+vim.opt.completeopt = {'menu','menuone','noselect'}

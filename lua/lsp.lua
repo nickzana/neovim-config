@@ -1,18 +1,40 @@
-local on_attach = require'keybindings'.on_attach
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local lsp = require('lsp-zero').preset({
+  name = 'minimal',
+  set_lsp_keymaps = false,
+  manage_nvim_cmp = false,
+  suggest_lsp_servers = false,
+})
 
-local lspconfig = require('lspconfig')
+local keybindings = require('keybindings')
+local on_attach = keybindings.on_attach
+local cmp_mapping = keybindings.cmp_mappings
 
--- SERVERS
--- rust_analyzer
-vim.g.rustfmt_autosave = 1
-lspconfig.rust_analyzer.setup{
-	on_attach = on_attach,
-	capabilities = capabilities,
+lsp.on_attach(on_attach)
+
+local cmp = require('cmp')
+local cmp_config = lsp.defaults.cmp_config({
+	preselect = 'none',
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	mapping = cmp.mapping.preset.insert(cmp_mappings),
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' },
+	},
+})
+cmp.setup(cmp_config)
+
+-- Configure lua language server for neovim
+lsp.nvim_workspace()
+
+lsp.configure('rust_analyzer', {
 	settings = {
 		["rust-analyzer"] = {
+			cargo = {
+				features = "all",
+			},
 			procMacro = {
 				enable = true,
 			},
@@ -20,17 +42,18 @@ lspconfig.rust_analyzer.setup{
 				command = 'clippy',
 				extraArgs = { "--", "-W", "clippy::pedantic" }
 			},
-		}
+		},
 	}
-}
+})
 
-lspconfig.gopls.setup {
-	on_attach = on_attach,
-	capabilities=capabilities,
-}
+lsp.configure('tsserver', {
+	cmd = { "npx", "typescript-language-server", "--stdio" },
+})
 
--- clangd
-lspconfig.clangd.setup{
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
+lsp.configure('html', {
+	cmd = { "npx", "vscode-html-language-server", "--stdio" },
+})
+
+lsp.setup_servers({'tsserver', 'rust_analyzer', 'html'})
+
+lsp.setup()
