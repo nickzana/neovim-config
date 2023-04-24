@@ -1,7 +1,7 @@
 local lsp = require('lsp-zero').preset({
   name = 'minimal',
   set_lsp_keymaps = false,
-  manage_nvim_cmp = false,
+  manage_nvim_cmp = true,
   suggest_lsp_servers = false,
 })
 
@@ -54,6 +54,13 @@ lsp.configure('html', {
 	cmd = { "npx", "vscode-html-language-server", "--stdio" },
 })
 
-lsp.setup_servers({'tsserver', 'rust_analyzer', 'html'})
+lsp.configure('texlab', {
+	forwardSearch = {
+		executable = 'zathura',
+		args = { '--synctex-forward', '%l:1:%f', '%p' }
+	},
+})
+
+lsp.setup_servers({'tsserver', 'rust_analyzer', 'html', 'texlab'})
 
 lsp.setup()
