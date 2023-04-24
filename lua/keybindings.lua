@@ -66,19 +66,19 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<leader>F', function() vim.lsp.buf.format() end, opts)
 end
 
-local cmp_mappings = function ()
-	local cmp = require('cmp')
-	return {
-		['<C-j>'] = cmp.mapping.scroll_docs(4),
-		['<C-k>'] = cmp.mapping.scroll_docs(-4),
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = {
+		['<C-d>'] = cmp.mapping.scroll_docs(4),
+		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-		['<CR>'] = cmp.mapping.confirm {
+		['<CR>'] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
-		},
+		}),
+		['<C-e>'] = cmp.mapping.abort(),
 	}
-end
 
 return { on_attach = on_attach, cmp_mappings = cmp_mappings }
