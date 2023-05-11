@@ -6,8 +6,6 @@ options = { noremap = true }
 -- Navigation
 map('n', 'gh', '0', options) -- make gh go to beginning of line
 map('n', 'gl', '$', options) -- make gl go to end of line
-map('n', 'gk', 'gg', options) -- make gk go to top of document
-map('n', 'gj', 'G', options) -- make gj go to bottom of document
 
 -- WINDOW MANAGEMENT
 
