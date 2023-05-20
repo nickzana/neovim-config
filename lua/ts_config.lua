@@ -1,5 +1,10 @@
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.hare = {
+require('nvim-treesitter.configs').setup {
+	highlight = {
+		enable = true,
+	}
+}
+
+require('nvim-treesitter.parsers').get_parser_configs().hare = {
   install_info = {
     url = "https://git.sr.ht/~ecmma/tree-sitter-hare", -- local path or git repo
     files = {"src/parser.c"},
