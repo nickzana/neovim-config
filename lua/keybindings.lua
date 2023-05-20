@@ -38,9 +38,14 @@ map('n', '<leader>q', '<cmd>call ToggleQFList(0)<CR>', {}) -- see plugin/navigat
 
 -- GIT
 -- top level commands
-map('n', '<leader>gs', '<cmd>G<CR>', options) -- Show git status
-map('n', '<leader>gc', '<cmd>G commit<CR>', options) -- git commit
+map('n', '<leader>gs', '<cmd>keepalt Git<CR>', options) -- Show git status
+map('n', '<leader>gc', '<cmd>G commit -v<CR>', options) -- git commit
 map('n', '<leader>gp', '<cmd>G push<CR>', {}) -- git push
+map('n', '<leader>gd', '<cmd>G diff<CR>', options)
+map('n', '<leader>gds', '<cmd>G diff --staged<CR>', options)
+
+-- staging
+map('n', '<leader>dp', '<cmd>diffput<CR>', options)
 
 -- merge
 map('n', '<leader>gh', '<cmd>diffget //2<CR>', options) -- merge from left pane
