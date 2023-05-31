@@ -16,6 +16,7 @@ local plugins = require('packer').startup(function(use)
 
 	-- git
 	use 'tpope/vim-fugitive'
+	use 'https://github.com/airblade/vim-gitgutter'
 
 	use {
         'nvim-treesitter/nvim-treesitter',
