@@ -66,6 +66,8 @@ lsp.configure('texlab', {
 
 lsp.configure('clangd', {})
 
-lsp.setup_servers({'tsserver', 'rust_analyzer', 'html', 'texlab', 'clangd'})
+lsp.configure('pylsp', {})
+
+lsp.setup_servers({'tsserver', 'rust_analyzer', 'html', 'texlab', 'clangd', 'pylsp'})
 
 lsp.setup()
