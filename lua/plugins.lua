@@ -23,6 +23,11 @@ local plugins = require('packer').startup(function(use)
         run = ':TSUpdate'
     }
 
+	use {
+		'https://github.com/github/copilot.vim',
+		keys = "<C-P>",
+	}
+
 	-- lsp
 	use {
 		'VonHeikemen/lsp-zero.nvim',

@@ -23,6 +23,9 @@ local cmp_config = lsp.defaults.cmp_config({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
 	},
+	experimental = {
+		ghost_text = false -- conflicts with copilot.vim's preview
+	},
 })
 cmp.setup(cmp_config)
 

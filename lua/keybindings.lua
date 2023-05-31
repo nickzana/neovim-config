@@ -51,6 +51,20 @@ map('n', '<leader>dp', '<cmd>diffput<CR>', options)
 map('n', '<leader>gh', '<cmd>diffget //2<CR>', options) -- merge from left pane
 map('n', '<leader>gl', '<cmd>diffget //3<CR>', options) -- merge from right pane
 
+vim.keymap.set(
+    "i",
+        "<Plug>(vimrc:copilot-dummy-map)",
+	    'copilot#Accept("")',
+	        { silent = true, expr = true, desc = "Copilot dummy accept" }
+)
+
+-- remap copilot key to <C-j>
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+
+local map = vim.keymap.set
+map("i", "<C-j>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
+
 -- LSP
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
